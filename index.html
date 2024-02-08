@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic</title>
+</head>
+<body>
+    <header>Arithmetic</header>
+    <input type="number" id="one"/><label></label> + <input type="number" id="two"/><label></label> <button onclick="calculateSum()">=</button> <label id="sum"></lable>
+
+    <script>
+        async function calculateSum() {
+            const operand1Input = document.getElementById("one");
+            const operand2Input = document.getElementById("two");
+            let n = operand1Input.value
+            let m = operand2Input.value
+            const response = await fetch("http://localhost:3000/add/" + n + "/" + m);
+            const sum = await response.json();
+            document.getElementById("sum").innerHTML = sum;
+        }
+    </script>
+</body>
+</html>
